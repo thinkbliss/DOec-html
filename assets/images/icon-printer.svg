@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="21px" height="19px" viewBox="0 0 21 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>Slice 1</title>
+    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+    <defs></defs>
+    <g id="Page 1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M1,10 L1,18 L20,18 L20,10 L1,10 Z M1,10" id="Rectangle 69" stroke="#159753" stroke-width="2" stroke-linejoin="round" fill="#FFFFFF"></path>
+        <path d="M5,1 L5,14 L16,14 L16,1 L5,1 Z M5,1" id="Rectangle 70" stroke="#159753" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF"></path>
+        <path d="M7.5,4.5 L13.5,4.5" id="Line" stroke="#159753" stroke-linecap="square" fill="#FFFFFF"></path>
+        <path d="M7.5,7.5 L13.5,7.5" id="Line" stroke="#159753" stroke-linecap="square" fill="#FFFFFF"></path>
+        <path d="M7.5,10.5 L13.5,10.5" id="Line" stroke="#159753" stroke-linecap="square" fill="#FFFFFF"></path>
+        <path d="M3,13 L3,17 L18,17 L18,13 L3,13 Z M3,13" id="Rectangle 73" fill="#FFFFFF"></path>
+        <path d="M3.44117647,13.5 L17.5588235,13.5" id="Line" stroke="#159753" stroke-linecap="square" fill="#FFFFFF"></path>
+    </g>
+</svg>
