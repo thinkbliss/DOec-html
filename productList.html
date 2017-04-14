@@ -4,9 +4,9 @@
 	<title>Product page components</title>
 	<link rel="stylesheet" type="text/css" href="assets/stylesheets/reset.css" />
 	<link rel="stylesheet" type="text/css" href="assets/stylesheets/details.css" />
-	<script type="text/javascript" src="assets/scripts/site.js"></script>
 	<script src="assets/scripts/jquery-latest.js" type="text/javascript" charset="utf-8"></script>
-	<script src="assets/scripts/pagination"#6E6E58".js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/scripts/pager.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="assets/scripts/members.js" type="text/javascript" charset="utf-8"></script>-->
 
 	<!--<script type="text/javascript">
 	$(document).ready(function(){
@@ -25,77 +25,113 @@
 	});
 });
 </script>-->
+
         <script type="text/javascript">
-        
-            // This demo shows how to paginate elements that were loaded via AJAX
-            // It's very similar to the static demo.
-        
-            /**
-             * Callback function that displays the content.
-             *
-             * Gets called every time the user clicks on a pagination link.
-             *
-             * @param {int}page_index New Page index
-             * @param {jQuery} jq the container with the pagination links as a jQuery object
-             */
-			function pageselectCallback(page_index, jq){
-                var new_content = $('.hiddenresult div.result:eq('+page_index+')').clone();
-                $('.searchresult').empty().append(new_content);
-                return false;
-            }
-           
-            /** 
-             * Callback function for the AJAX content loader.
-             */
-            function initPagination() {
-                var num_entries = $('.hiddenresult div.result').length;
-                // Create pagination element
-                $(".pagination").pagination(num_entries, {
-                    num_edge_entries: 2,
-                    num_display_entries: 8,
-                    callback: pageselectCallback,
-                    items_per_page:1
-                });
-             }
-                    
-            // Load HTML snippet with AJAX and insert it into the Hiddenresult element
-            // When the HTML has loaded, call initPagination to paginate the elements        
-            $(document).ready(function(){      
-                $('.hiddenresult').load('snippet.html', null, initPagination);
-            });
-            
-            
+            $(document).ready(function() {
+				startindex = 1;
+				loadmore = 15;
+				addMore(startindex, loadmore);
+	
+				$('#addmore').on('click',function(e) {
+					e.preventDefault();
+					addMore($('#list li').length, 15);
+				});
+			});
+
+			function twenty(startindex,loadmore) {
+				src = "assets/scripts/data.json" + loadmore + "&start-index=" + startindex;
+				$.ajax({
+					dataType: "json",
+					url: src,
+					success: function(data, textStatus, jqXHR) {
+						if (data.feed && data.feed.entry) {
+							var $list = $('#list');
+
+							$.each(data.feed.entry, function(i, e) {
+								$list.append('<li class="item"><a href="' + e.link[1].href + '"><span>' + e.title.$t + '</span></a><span>' + e.author[0].name.$t + '</span></li>');
+							});
+						}
+					}
+				});
+				
+			function fortyEight(startindex,loadmore) {
+				src = "assets/scripts/data.json" + loadmore + "&start-index=" + startindex;
+				$.ajax({
+					dataType: "json",
+					url: src,
+					success: function(data, textStatus, jqXHR) {
+						if (data.feed && data.feed.entry) {
+							var $list = $('#list');
+
+							$.each(data.feed.entry, function(i, e) {
+								$list.append('<li class="item"><a href="' + e.link[1].href + '"><span>' + e.title.$t + '</span></a><span>' + e.author[0].name.$t + '</span></li>');
+							});
+						}
+					}
+				});	
+			function hundred(startindex,loadmore) {
+				src = "assets/scripts/data.json" + loadmore + "&start-index=" + startindex;
+				$.ajax({
+					dataType: "json",
+					url: src,
+					success: function(data, textStatus, jqXHR) {
+						if (data.feed && data.feed.entry) {
+							var $list = $('#list');
+
+							$.each(data.feed.entry, function(i, e) {
+								$list.append('<li class="item"><a href="' + e.link[1].href + '"><span>' + e.title.$t + '</span></a><span>' + e.author[0].name.$t + '</span></li>');
+							});
+						}
+					}
+				});							
+				
+			}
             
         </script>
+
 </head>
 <body>
 	<div class="wrapperContainer">
 		<div class="headerContainer">
 			<div class="brandBar">
-				<ul class="userNav">
+					<!--<ul class="floatRight">
 					<li>Antartica <a href="#">(change)</a></li>
 					<li><a href="#">Log in/Register</a></li>
 					<li><a href="#">MyPearson</a></li>
-				</ul>				
+				</ul>	-->			
 				<img class="logo" src="assets/images/logo.svg" width="120" />			
 			</div>
-			<div class="mainNav">
-				<ul>
+			<div class="navBar">
+				<ul class="mainNav">
 					<li><a href="#">RESOURCES</a></li>
 					<li><a href="#">COMMUNITY</a></li>
-					<li><a href="#">CATALOGUE</a></li>
-					<li><a href="#">PROFESSIONAL DEVELOPMENT</a></li>
-					<li><a href="#">SUPPORT</a></li>
-					<li><a href="#">RESOURCES</a></li>
-					<li>
-						<input type="text" placeholder="SEARCH" />
-						<input type="submit" class="butn-search" />
-					</li>						
-					<li class="mybag"><a href="#">MY BAG</a></li>
+					<li><a href="#">CATALOGUE</a></li>						
 				</ul>
+				<div class="auxNav">
+					<ul class="userNav">
+						<li>Russian Federation <a href="#">(change)</a></li>
+						<li><a href="#">Log in</a></li>
+						<li><a href="#">Register</a></li>
+					</ul>
+					<div class="itemManagement">
+						<form action="" method="post">
+							<input type="text" name="search" placeholder="SEARCH" />
+						</form>
+						<a class="mybag" href="#">105 ITEMS</a>
+					</div>
+				</div>				
 			</div>			
 		</div>
 		<div class="mainContentContainer">
+			<div class="utilityContainer">
+				<ul class="breadCrumbs">
+					<li><a href="#">Bread crumb</a></li>
+					<li><a href="#">Bread crumb</a></li>
+					<li><a href="#">Bread crumb</a></li>
+					<li><a href="#">Bread crumb</a></li>
+					<li><a href="#">Bread crumb</a></li>
+				</ul>
+			</div>		
 			<div class="leftRail">
 				<ul class="categoryModule">
 					<h5>Category</h5>
@@ -140,145 +176,161 @@
 			</div>
 			<div class="headerBlock clearBasic">
 				<h2 class="floatLeft">256 Items</h2>
-				<div class="searchFilters floatRight">
-					<ul class="numberBlock floatRight">
-						<li>20</li>
-						<li class="selected">48</li>
-						<li>100</li>
+				<div class="searchFilters floatRight controls">
+					<ul class="numberBlock floatRight" id="p2-per-page">
+						<li class="selected"><a href="#">20</a></li>
+						<li><a href="#">48</a></li>
+						<li><a href="#">100</a></li>
 					</ul>				
-					<form class="floatRight" action="">
+					<!--<form class="floatRight" action="">
 						<select>
 							<option selected value="">Price Low to High</option>
 						</select>
-					</form>
+					</form>-->
 				</div>
 			</div>
-			<div class="contentBlock clearBasic">
+			<div id="pagination-2" class="contentBlock clearBasic">
+
+			<div class="results">				
 				<ul class="productListItems">
-					<li>
+					<li class="item">
 						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
 						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
-						<span class="detail">Active Teach CD<br/>
+						<span class="prodType">Active Teach CD<br/>
 						<span class="regularPrice">£94.08</span><br/>
 						<span class="inStock">In Stock</span>
-						<button class="butn add closed">add to cart</button>
+						<button class="butn cartAdd closed">add to cart</button>
 					</li>
 					
-					<li>
+					<li class="item">
+						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
+						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
+						<span class="prodType">Active Teach CD<br/>
+						<span class="regularPrice">£94.08</span><br/>
+						<span class="inStock">In Stock</a>
+						<button class="butn cartAdd closed">add to cart</button>
+					</li>
+					
+					<li class="item">
 						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
 						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
 						<span class="detail">Active Teach CD<br/>£94.08</span>
 						<span class="inStock">In Stock</a>
-						<button class="butn closed">add to cart</button>
+						<button class="butn cartAdd closed">add to cart</button>
 					</li>
 					
-					<li>
+					<li class="item">
 						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
 						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
 						<span class="detail">Active Teach CD<br/>£94.08</span>
-						<span class="inStock">In Stock</a>
-						<button class="butn closed">add to cart</button>
-					</li>
-					
-					<li>
-						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
-						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
-						<span class="detail">Active Teach CD<br/>£94.08</span>
-						<span class="outStock">In Stock</a>
-						<button class="butn closed">add to cart</button>
+						<span class="outStock">Out of stock</a>
+						<button class="butn cartAdd closed">add to cart</button>
 					</li>	
 					
-					<li>
+					<li class="item">
 						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
 						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
 						<span class="detail">Active Teach CD<br/>£94.08</span>
 						<span class="inStock">In Stock</a>
+						<button class="butn cartAdd closed">add to cart</button>
 					</li>
 					
-					<li>
+					<li class="item">
 						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
 						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
 						<span class="detail">Active Teach CD<br/>£94.08</span>
 						<span class="inStock">In Stock</a>
+						<button class="butn cartAdd closed">add to cart</button>
 					</li>
 					
-					<li>
+					<li class="item">
+						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
+						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
+						<span class="detail">Active Teach CD<br/>£94.08</span>
+						<span class="preOrder">Pre-order</a>
+						<button class="butn cartAdd closed">add to cart</button>
+					</li>
+					
+					<li class="item">
+						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
+						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
+						<span class="detail">Active Teach CD<br/>£94.08</span>
+						<span class="outStock">Out of stock</a>
+						<button class="butn cartAdd closed">add to cart</button>						
+					</li>
+					
+					<li class="item">
 						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
 						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
 						<span class="detail">Active Teach CD<br/>£94.08</span>
 						<span class="inStock">In Stock</a>
+						<button class="butn cartAdd closed">add to cart</button>
 					</li>
 					
-					<li>
-						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
-						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
-						<span class="detail">Active Teach CD<br/>£94.08</span>
-						<span class="outStock">In Stock</a>
-					</li>
-					
-					<li>
+					<li class="item">
 						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
 						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
 						<span class="detail">Active Teach CD<br/>£94.08</span>
 						<span class="inStock">In Stock</a>
+						<button class="butn cartAdd closed">add to cart</button>
 					</li>
 					
-					<li>
+					<li class="item">
+						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
+						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
+						<span class="detail">Active Teach CD<br/>£94.08</span>
+						<span class="outStock">Out of stock</a>
+						<button class="butn cartAdd closed">add to cart</button>						
+					</li>
+					
+					<li class="item">
+						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
+						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
+						<span class="detail">Active Teach CD<br/>£94.08</span>
+						<span class="preOrder">Pre-order</a>
+						<button class="butn cartAdd closed">add to cart</button>
+					</li>
+					
+					<li class="item">
 						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
 						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
 						<span class="detail">Active Teach CD<br/>£94.08</span>
 						<span class="inStock">In Stock</a>
+						<button class="butn cartAdd closed">add to cart</button>
 					</li>
 					
-					<li>
+					<li class="item">
 						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
 						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
 						<span class="detail">Active Teach CD<br/>£94.08</span>
 						<span class="inStock">In Stock</a>
+						<button class="butn cartAdd closed">add to cart</button>
 					</li>
 					
-					<li>
+					<li class="item">
 						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
 						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
 						<span class="detail">Active Teach CD<br/>£94.08</span>
-						<span class="outStock">In Stock</a>
+						<span class="outStock">Out of stock</a>
+						<button class="butn cartAdd closed">add to cart</button>						
 					</li>
 					
-					<li>
-						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
-						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
-						<span class="detail">Active Teach CD<br/>£94.08</span>
-						<span class="inStock">In Stock</a>
-					</li>
-					
-					<li>
+					<li class="item">
 						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
 						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
 						<span class="detail">Active Teach CD<br/>£94.08</span>
 						<span class="inStock">In Stock</a>
-					</li>
-					
-					<li>
-						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
-						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
-						<span class="detail">Active Teach CD<br/>£94.08</span>
-						<span class="inStock">In Stock</a>
-					</li>
-					
-					<li>
-						<a class="thumbnail" href="" title=""><img src="assets/images/fpo-prod-thumb.png" alt="" /></a>
-						<a class="prodTitle" href="" title="">Lifestyle Intermediate Active Teach</a>
-						<span class="detail">Active Teach CD<br/>£94.08</span>
-						<span class="outStock">In Stock</a>
-					</li>						
-																												
+						<button class="butn cartAdd closed">add to cart</button>
+					</li>																														
+				</ul>				
+ 			</div>
+ 			<div class="pagination">
+				<ul>
+					<li><a href="#" id="prev" class="prevnext">« Previous</a></li>
+					<li><a href="#" id="next" class="prevnext">Next »</a></li>
 				</ul>
 			</div>
 		</div>			
-		<div class="hiddenresult" style="display:none;">
-        
-        </div>
-
 		<div class="footerContainer">
 			<ul>
 				<li><a href="#">A link</a></li>

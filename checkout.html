@@ -2,33 +2,50 @@
         "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
 <head>
-	<title>Product page components</title>
+	<title>Checkout page components</title>
 	<link rel="stylesheet" type="text/css" href="assets/stylesheets/reset.css" />
 	<link rel="stylesheet" type="text/css" href="assets/stylesheets/details.css" />
+	<link rel="stylesheet" type="text/css" href="assets/stylesheets/fancybox.css"/>
+	<script type="text/javascript" src="assets/scripts/jquery-latest.js"></script>
+	<script type="text/javascript" src="assets/scripts/site.js"></script>
+	<script type="text/javascript" src="assets/scripts/fancybox.js"></script>	
+	
+	<style type="text/css">
+		#shippingAddress, #billingAddress { display: none; }
+	</style>
+
 </head>
 <body>
 
 	<div class="wrapperContainer">
 		<div class="headerContainer">
 			<div class="brandBar">
-				<ul class="userNav">
+					<!--<ul class="floatRight">
 					<li>Antartica <a href="#">(change)</a></li>
 					<li><a href="#">Log in/Register</a></li>
 					<li><a href="#">MyPearson</a></li>
-				</ul>				
+				</ul>	-->			
 				<img class="logo" src="assets/images/logo.svg" width="120" />			
 			</div>
-			<div class="mainNav">
-				<ul>
+			<div class="navBar">
+				<ul class="mainNav">
 					<li><a href="#">RESOURCES</a></li>
 					<li><a href="#">COMMUNITY</a></li>
-					<li><a href="#">CATALOGUE</a></li>
-					<li><a href="#">PROFESSIONAL DEVELOPMENT</a></li>
-					<li><a href="#">SUPPORT</a></li>
-					<li><a href="#">RESOURCES</a></li>
-					<li><input type="text" value="SEARCH" /></li>						
-					<li class="mybag"><a href="#">MY BAG</a></li>
+					<li><a href="#">CATALOGUE</a></li>						
 				</ul>
+				<div class="auxNav">
+					<ul class="userNav">
+						<li>Russian Federation <a href="#">(change)</a></li>
+						<li><a href="#">Log in</a></li>
+						<li><a href="#">Register</a></li>
+					</ul>
+					<div class="itemManagement">
+						<form action="" method="post">
+							<input type="text" name="search" placeholder="SEARCH" />
+						</form>
+						<a class="mybag" href="#">105 ITEMS</a>
+					</div>
+				</div>				
 			</div>			
 		</div>
 		<div class="mainContentContainer">
@@ -51,39 +68,47 @@
 					<li>
 						<h3>shipping address</h3>
 						<p>Madeleine Yu<br/>463A 5th Avenue, apt 2R<br/>Brooklyn, NY 11215</p>
-						<a href="#">Change</a>
-					</li>
-					<li>
-						<h3>billing address</h3>
-						<p>Murray the Cat<br/>82 5th Avenue, #4L<br/>Brooklyn, NY 11217</p>
-						<a href="#">Change</a>
+						<a class="various downArrow" href="#shippingAddress">Change</a>
 					</li>
 					<li>
 						<h3>shipping method</h3>
 						<select>
-							<option>FedEx</option>
+							<option>FedEx - $Price</option>
 							<option>ups</option>
 							<option>NoEx</option>
 						</select>
+						<!-- estimated ship date not in scope sprint 7 // <p>Estimated delivery date: Friday June 21st</p>-->
+					</li>
+					<li>
+						<h3>billing address</h3>
+						<p>Murray the Cat<br/>82 5th Avenue, #4L<br/>Brooklyn, NY 11217</p>
+						<a class="various downArrow" href="#billingAddress">Change</a>						
 					</li>
 					<li>
 						<h3>payment details</h3>
-						<p>Visa ending in: 3455<br/>Expires on 12/15<br/>Please enter your security card number <input type="text" class="shortInput"></p>
+						<div class="cardInfo">
+							<p>Visa ending in: 3455</p>
+							<p>Expires on 12/15</p>
+						</div>
+						<!-- card type icon not in scope sprint 6 // <img class="cardIcon" src="assets/images/icon-visa.png" alt="Visa Icon" /> -->
+						<p class="clearAll">Please enter your security card number <input type="text" class="tinyInput"></p>
+
+						<a class="downArrow" href="creditCardInfo.html">Change</a>						
 					</li>					
 				</ul>			
 			</div>
-			<div class="headerBlock clearBasic">
+			<div class="headerBlockBorderless topBorder clearBasic">
 				<div class="floatRight buttonBlock">
 					<button class="butn open">continue shopping</button>
 					<button class="butn closed">checkout</button>
-				</div>
+				</div>			
 			</div>
-			<div class="contentBlock">
-				<ul class="productListDescription">
-					<li class="description">Description</li>
-					<li class="qty">Quantity</li>
-					<li class="price">Price</li>
-				</ul>
+			<ul class="productListDescription">
+				<li class="description">Description</li>
+				<li class="qty">Quantity</li>
+				<li class="price">Price</li>
+			</ul>				
+			<div class="contentBlock topBorder">
 				<ul class="productList">
 					<li>
 						<ul class="productDetails">
@@ -122,23 +147,23 @@
 						</ul>
 					</li>									
 				</ul>			
-			</div>
-			<div class="contentBlock clearBasic">
-				<dl class="priceBlock">
-					<dt>Subtotal</dt><dd>$162.45</dd>
-					<dt>Subtotal</dt><dd>-$62.45</dd>
-					<dt>Subtotal</dt><dd>Free</dd>
-					<dt>Subtotal</dt><dd>$3.45</dd>
-					<dt>Subtotal</dt><dd>$162.45</dd>
-				</dl>
 			</div>	
-			<div class="contentBlock clearBasic">
-				<div class="floatRight buttonBlock">
-					<button class="butn open">continue shopping</button>
-					<button class="butn closed">checkout</button>
-				</div>				
-			</div>
 		</div>
+		<div class="footerBlock">
+			<dl class="priceBlock">
+				<dt>Subtotal</dt><dd>$162.45</dd>
+				<dt>Discount</dt><dd>-$62.45</dd>
+				<dt>Delivery Charge</dt><dd>Free</dd>
+				<dt>VAT</dt><dd>$3.45</dd>
+				<dt>Total</dt><dd class="priceTotal">$162.45</dd>
+			</dl>		
+		</div>	
+		<div class="footerBlock">
+			<div class="floatRight buttonBlock ">
+				<button class="butn open">continue shopping</button>
+				<button class="butn closed">checkout</button>
+			</div>	
+		</div>			
 		<div class="footerContainer">
 			<ul>
 				<li><a href="#">A link</a></li>
@@ -150,5 +175,124 @@
 			<p>Some legal jargon, copyright info and whatnot.</p>
 		</div>		
 	</div>
+	
+	<!-- pop up containers -->
+	
+	
+		<div id="billingAddress" class="flexContentContainer"><!-- start billing address change modal -->
+			<div class="headerBlockBorderless">
+				<h4>select a new billing address</h2>
+			</div>
+			<ul class="flexColumn editAddressModal">
+				<li>
+					<span class="titleText">Robert Smith</span>
+					<span class="auxText">76 Base Line Rd</span>
+					<span class="auxText">W London ON N6J 4X6</span>
+					<div class="buttonBlock">
+						<button class="butn closed">select</button>
+					</div>						
+				</li>
+				<li>
+					<span class="titleText">Robert Smith</span>
+					<span class="auxText">76 Base Line Rd</span>
+					<span class="auxText">W London ON N6J 4X6</span>
+					<div class="buttonBlock">
+						<button class="butn closed">select</button>
+					</div>						
+				</li>			
+				<li>
+					<span class="titleText">Robert Smith</span>
+					<span class="auxText">76 Base Line Rd</span>
+					<span class="auxText">W London ON N6J 4X6</span>
+					<div class="buttonBlock">
+						<button class="butn closed">select</button>
+					</div>						
+				</li>
+				<li>
+					<span class="titleText">Robert Smith</span>
+					<span class="auxText">76 Base Line Rd</span>
+					<span class="auxText">W London ON N6J 4X6</span>
+					<div class="buttonBlock">
+						<button class="butn closed">select</button>
+					</div>						
+				</li>	
+			
+				<li>
+					<span class="titleText">Robert Smith</span>
+					<span class="auxText">76 Base Line Rd</span>
+					<span class="auxText">W London ON N6J 4X6</span>
+					<div class="buttonBlock">
+						<button class="butn closed">select</button>
+					</div>						
+				</li>						
+								
+				<li>				
+					<div class="buttonBlock floatLeft">
+						<button class="butn open">add new address</button>
+						<a class="blocked">Edit or remove address</a>
+					</div>
+				</li>
+								
+			</ul>						
+		</div><!-- end billing address change modal -->
+		
+		<div id="shippingAddress" class="flexContentContainer"><!-- start shipping address change modal -->
+			<div class="headerBlockBorderless">
+				<h4>select a new shipping address</h2>
+			</div>
+			<ul class="flexColumn editAddressModal">
+				<li>
+					<span class="titleText">Robert Smith</span>
+					<span class="auxText">76 Base Line Rd</span>
+					<span class="auxText">W London ON N6J 4X6</span>
+					<div class="buttonBlock">
+						<button class="butn closed">select</button>
+					</div>						
+				</li>
+				<li>
+					<span class="titleText">Robert Smith</span>
+					<span class="auxText">76 Base Line Rd</span>
+					<span class="auxText">W London ON N6J 4X6</span>
+					<div class="buttonBlock">
+						<button class="butn closed">select</button>
+					</div>						
+				</li>			
+				<li>
+					<span class="titleText">Robert Smith</span>
+					<span class="auxText">76 Base Line Rd</span>
+					<span class="auxText">W London ON N6J 4X6</span>
+					<div class="buttonBlock">
+						<button class="butn closed">select</button>
+					</div>						
+				</li>
+				<li>
+					<span class="titleText">Robert Smith</span>
+					<span class="auxText">76 Base Line Rd</span>
+					<span class="auxText">W London ON N6J 4X6</span>
+					<div class="buttonBlock">
+						<button class="butn closed">select</button>
+					</div>						
+				</li>	
+			
+				<li>
+					<span class="titleText">Robert Smith</span>
+					<span class="auxText">76 Base Line Rd</span>
+					<span class="auxText">W London ON N6J 4X6</span>
+					<div class="buttonBlock">
+						<button class="butn closed">select</button>
+					</div>						
+				</li>						
+								
+				<li>				
+					<div class="buttonBlock floatLeft">
+						<button class="butn open">add new address</button>
+						<a class="blocked">Edit or remove address</a>
+					</div>
+				</li>								
+			</ul>						
+		</div>	<!-- end shipping address change modal -->
+		
+		
+	
 </body>
 </html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Product page components</title>
+	<link rel="stylesheet" type="text/css" href="assets/stylesheets/reset.css" />
+	<link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css" />
+	<script type="text/javascript" src="assets/scripts/site.js"></script>
+	<script src="assets/scripts/jquery-latest.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('.productListItems li').hover(function() {
+		$(this).children('.listBorder').stop().animate({
+			opacity: 1,
+			top: '0px',
+			left: '-6px'
+		})
+	}, function() {
+		$(this).children('.listBorder').stop().animate({
+			opacity: 0,
+			top: '-6px',
+			left: '-6px'
+		})
+	});
+});
+</script>
+</head>
+<body>
+	<div class="wrapperContainer">
+		<div class="headerContainer">
+			<div class="brandBar">
+				<!--<ul class="floatRight">
+					<li>Antartica <a href="#">(change)</a></li>
+					<li><a href="#">Log in/Register</a></li>
+					<li><a href="#">MyPearson</a></li>
+				</ul>	-->			
+				<img class="logo" src="assets/images/logo.svg" width="120" />			
+			</div>
+			<div class="navBar">
+				<ul class="mainNav">
+					<li><a href="#">RESOURCES</a></li>
+					<li><a href="#">COMMUNITY</a></li>
+					<li><a href="#">CATALOGUE</a></li>						
+				</ul>
+				<div class="auxNav">
+					<ul class="userNav">
+						<li>Russian Federation <a href="#">(change)</a></li>
+						<li><a href="#">Log in</a></li>
+						<li><a href="#">Register</a></li>
+					</ul>
+					<div class="itemManagement">
+						<form action="" method="post">
+							<input type="text" name="search" placeholder="SEARCH" />
+						</form>
+						<a class="mybag" href="#">105 ITEMS</a>
+					</div>
+				</div>				
+			</div>			
+		</div>
+		<div class="homepageContainer">
+			<div class="rowBlock hero">
+				<div class="headlineContainer">
+					<h2>What really makes students tick?</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+					<button type="button" name="" value="">CALL TO ACTION</button>
+				</div>
+			</div>
+			<div class="rowBlock carousel">
+				<ul>
+					<li class="columnBlock">
+						<img src="assets/images/homepage/thumb-suitcases.png" alt="" />
+						<div class="copyContainer">
+							<h5>An avalanche is coming</h5>
+							<p>Suspendisse pulvinar egestas odio, sed semper enim dignissim at. <a href="#" title="">More on the future of professional studies</a>.</p>
+						</div>
+					</li>
+					<li class="columnBlock">
+						<img src="assets/images/homepage/thumb-thelearningcurve.png" alt="" />
+						<div class="copyContainer">
+							<h5>Lessons in country performance in education</h5>
+							<p>Ut ac lacus nec ante suscipit convallis. Donec sed est quis justo malesuada rhoncus. <a href="#" title="">More on Duis aute irure.</a>.</p>
+						</div>
+					</li>
+					<li class="columnBlock">
+						<img src="assets/images/homepage/icon-qinteractive.png" alt="" />
+						<div class="copyContainer">
+							<h5>Introducting Q-interactive</h5>
+							<p>Quisque tincidunt tempus turpis, sed ornare eros placerat vitae. Cras tempor risus arcu, a aliquet nunc interdum dignissim. <a href="#" title="">More on Q-interactive.</a>.</p>
+					</div>
+					</li>
+				</ul>
+			</div>
+			<div class="rowBlock aux">
+				<div class="videoFrame">
+					<a class="butnPlay" href="#" title=""></a>
+					<div class="headlineContainer">
+						<h2>The future of education</h2>
+						<p>Sub message goes here that is a call to action.</p>
+					</div>
+				</div>
+			</div>			
+			
+		</div>
+		
+		<div class="footerContainer fatFooter">
+			<div class="columnBlock">
+				<ul>
+				<li>
+					<h5>pre k-12</h5>
+					<ul>
+						<li>What We Do</li>
+						<li>Topics</li>
+						<li>Subjects</li>
+						<li>Results</li>
+						<li>Parents & Students</li>
+					</ul>
+				</li>
+				</ul>
+				<ul>
+				<li>
+					<h5>Higher Education</h5>
+					<ul>
+						<li>Educator</li>
+						<li>Student</li>
+						<li>Academic Executive</li>
+						<li>Other Customers</li>
+					</ul>
+				</li>		
+				</ul>		
+			</div>
+			<div class="columnBlock">
+				<ul>
+				<li>
+					<h5>Professionals</h5>
+				</li>			
+				<li>
+					<h5>Contact</h5>
+					<ul>
+						<li>For Media</li>
+						<li>Request Information</li>
+					</ul>
+				</li>
+				</ul>
+			</div>
+			<div class="columnBlock">
+				<li>
+					<h5>Higher Education</h5>
+					<ul>
+						<li>Educator</li>
+						<li>Student</li>
+						<li>Academic Executive</li>
+						<li>Other Customers</li>
+					</ul>
+				</li>
+			</div>
+			<ul>
+
+			</ul>
+			<p>Some legal jargon, copyright info and whatnot.</p>
+		</div>		
+	</div>
+
+</body>
+</html>

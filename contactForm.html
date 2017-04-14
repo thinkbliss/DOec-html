@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jQuery.Validate/1.6/jQuery.Validate.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+      $("#theForm").validate();
+      });
+    </script>
+    <title>A Simple Contact form</title>
+  </head>
+  <body>
+    <form id="theForm"
+	  me_email
+	  me_page="contactThanks.html"
+	  me_subject="Contact page submission from your site">
+      <div>
+	<label for="firstName">Your First Name</label>
+        <input class="required" name="firstName" type="text" id="firstName" style="width:250px" />
+      </div>
+      <div>
+	<label for="lastName">Your Last Name</label>
+	<input class="required" name="lastName" type="text" id="lastName" style="width:250px" />
+      </div>
+      <div>
+	<label for="phone">Phone Number</label>
+	<input name="phone" type="text" id="phone" style="width:250px" />
+      </div>
+      <div>
+	<label for="email">Email</label>
+	<input class="required email" name="email" type="text" id="email" style="width:250px" />
+      </div>
+      <div>
+	<label for="city">City</label>
+	<input name="city" type="text" id="city" style="width:250px" />
+      </div>
+      <div>
+	<label for="state">State</label>
+	<input name="state" type="text" id="state" style="width:250px" />
+      </div>
+      <div>
+	<label>Your Message</label>
+	<textarea name="comments" rows="5" style="width:535px"></textarea>
+      </div>
+      <div>
+	<input class="button" type="submit" value="SEND CONTACT FORM" />
+      </div>
+    </form>
+  </body>
+</html>
